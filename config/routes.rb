@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+  get 'sessions/new'
+  get 'sessions/destroy'
   resources :experiences
   resources :destinations
   resources :users
