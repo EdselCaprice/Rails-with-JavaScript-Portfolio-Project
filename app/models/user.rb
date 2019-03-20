@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :experiences, through: :destinations
+    has_many :destinations
 
     def add_wander_point
         update_points(1)
