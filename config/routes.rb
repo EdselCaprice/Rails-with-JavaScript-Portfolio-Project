@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
-  get 'sessions/new'
-  get 'sessions/destroy'
+  get "/signin", to: "sessions#new"
+  post "/sessions/create", to: "sessions#create"
+  delete "/signout", to: "sessions#destroy"
+
   resources :experiences
   resources :destinations
   resources :users do
