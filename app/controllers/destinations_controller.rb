@@ -1,12 +1,14 @@
 class DestinationsController < ApplicationController
 
     def index
+        @destination = Destination.all
     end
 
     def show
     end
 
     def new
+        @destination = Destination.new
     end
     
     def edit
