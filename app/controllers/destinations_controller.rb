@@ -30,6 +30,16 @@ class DestinationsController < ApplicationController
     end
 
     def update
+        if @destination.update(destination_params)
+            redirect_to @destination
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @destination.destroy
+        redirect_to destinations_url
     end
 
     private
