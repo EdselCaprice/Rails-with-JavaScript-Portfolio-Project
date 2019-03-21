@@ -17,7 +17,7 @@ class ExperiencesController < ApplicationController
     end
 
     def create
-        @user = Experience.new(experience_params)
+        @experience = Experience.new(experience_params)
         if @experience.save
             session[:experience_id] = @experience.id
             redirect_to experience_path(@experience)
@@ -46,7 +46,7 @@ class ExperiencesController < ApplicationController
       end
 
     def experience_params
-        params.require(:user).permit(:activity)
+        params.require(:experience).permit(:activity)
     end
 
 end
