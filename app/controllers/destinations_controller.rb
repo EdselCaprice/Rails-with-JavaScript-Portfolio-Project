@@ -11,9 +11,9 @@ class DestinationsController < ApplicationController
     def new
         @destination = Destination.create(
             :user_id => params[:user_id],
-         #   :experience_id => params[:experience_id]
+            :experience_id => params[:experience_id]
           )
-          #redirect_to new_user_destination_path(@destination.user)
+                    #redirect_to new_user_destination_path(@destination.user)
     end
     
     def edit
