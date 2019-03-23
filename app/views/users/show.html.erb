@@ -13,7 +13,7 @@
 <h2>These are the destinations you have traveled to so far:</h2>
     <p> 
     <% @user.destinations.each do |destination| %>
-        <%= link_to destination.location, user_destination_path(destination) %><br>
+        <%= link_to destination.location, destination_path(destination) %><br>
     <% end %>
     </p>
 

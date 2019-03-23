@@ -9,12 +9,9 @@ class DestinationsController < ApplicationController
     end
 
     def new
-        @experience = Experience.new
-        @destination = Destination.create(
-            :user_id => params[:user_id],
-            :experience_id => @experience.id
-          )
-                    #redirect_to new_user_destination_path(@destination.user)
+        @destination = Destination.new
+        @destination.user_id = params[:user_id]
+        @user = User.find_by(id: params[:user_id])
     end
     
     def edit
@@ -22,9 +19,9 @@ class DestinationsController < ApplicationController
 
     def create
         @destination = Destination.new(destination_params)
+        @destination.user_id = session[:user_id]
         if @destination.save
-            session[:destination_id] = @destination.id
-            redirect_to user_destination_path(@destination.user)
+            redirect_to destination_path(@destination)
         else
             render :new
         end
