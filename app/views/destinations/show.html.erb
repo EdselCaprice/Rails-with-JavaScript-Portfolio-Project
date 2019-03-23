@@ -1,0 +1,7 @@
+
+    <h1>Destination: <%= @destination.location %></h1>
+    <p>Created by: <%= @destination.user.username %></p>
+
+    <p>What people are doing in <%=@destination.location%>:</p>
+
+    <%= link_to "Back to your home page", user_path(@destination.user) %><br>
