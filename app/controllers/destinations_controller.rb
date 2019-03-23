@@ -24,7 +24,7 @@ class DestinationsController < ApplicationController
         @destination = Destination.new(destination_params)
         if @destination.save
             session[:destination_id] = @destination.id
-            redirect_to destination_path(@destination)
+            redirect_to user_destination_path(@destination.user)
         else
             render :new
         end
