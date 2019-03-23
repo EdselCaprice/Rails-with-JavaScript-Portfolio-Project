@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
             :user_id => params[:user_id],
             :experience_id => params[:experience_id]
           )
-          redirect_to user_path(@destination.user)
+          #redirect_to new_user_destination_path(@destination.user)
     end
     
     def edit
