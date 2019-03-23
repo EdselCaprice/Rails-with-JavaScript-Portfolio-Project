@@ -11,5 +11,14 @@
 
   <body>
     <%= yield %>
+    <% if session[:user_id] != nil %>
+    <%= link_to "User Home Page", users_path %><br>
+      <%= link_to "Logout", signout_path %><br>
+    <% else %>
+      <%= link_to "Sign in", signin_path %><br>
+      <%= link_to "Sign up", new_user_path %><br>
+    <% end %>
+
+
   </body>
 </html>
