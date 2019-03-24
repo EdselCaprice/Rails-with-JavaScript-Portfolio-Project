@@ -3,12 +3,8 @@ class User < ApplicationRecord
     has_many :experiences, through: :destinations
     has_many :destinations
 
-    def add_wanderpoint
-        update_points(1)
-    end
-
-    def remove_wanderpoint
-        update_points(-1)
+    def current_wanderpoints
+      wanderpoints =  (self.destinations.count * 50) + count_experiences
     end
 
     private
@@ -17,6 +13,16 @@ class User < ApplicationRecord
         self.user.update(wanderpoints: self.wanderpoints + amount)
     end
 
-
+    def count_experiences
+        counter = 0
+        Destination.all.each do |destination|
+            destination.experiences.each do |experience|
+                if experience.destination_id == destination.id
+                    counter = counter + 1
+                end
+            end
+        end
+        return counter * 10
+    end
 
 end
