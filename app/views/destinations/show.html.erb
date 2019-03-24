@@ -2,9 +2,16 @@
     <h1>Destination: <%= @destination.location %></h1>
     <p>Created by: <%= @destination.user.username %></p>
 
-    <p>What other users are doing in <%=@destination.location%>:</p>
-   <% if @destination.experiences.count == 0  %>
-    <p> No users have been here before!</p>
+    <h2>Your <%= @destination.location %> expriences: </h2>
+    <ul>
+    <% @destination.experiences.each do |experience| %>
+        <li><%= experience.activity %></li>
+    <% end %>
+    </ul>
+
+    <h3>What other users are doing when they go to <%=@destination.location%>:</h3>
+   <% if @destination.experiences.count - @destination.experiences.count == 0  %>
+    <p> No other users have experienced <%= @destination.location %> before!</p>
     <% else %>
     <ul>
     <% User.all.each do |user| %>
