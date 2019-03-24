@@ -4,7 +4,7 @@
 
     <h2>Your <%= @destination.location %> expriences: </h2>
     <% if @destination.experiences.count == 0 %>
-        <p> You have not had any experiences in <%=@destination.location%> yet.  <%= link_to "If you have been here before, Add your experience now!", new_experience_path %> </p>
+        <p> You have not had any experiences in <%=@destination.location%> yet.  <%= link_to "If you have been here before, Add your experience now!", new_user_destination_experience_path(current_user, @destination) %> </p>
     <% end %>
     <ul>
     <% @destination.experiences.each do |experience| %>
@@ -28,6 +28,6 @@
     <% end %>
     </ul>
     <% end %>
-    <%= link_to "Add your experience at this location", new_experience_path %><br>
-    <%= link_to "Back to your home page", user_path(@current_user) %><br>
-    <%= link_to "Edit Destination", edit_destination_path(@destination) %><br>
+    <%= link_to "Add your experience at this location", new_user_destination_experience_path(current_user, @destination) %><br>
+    <%= link_to "Back to your home page", user_path(current_user) %><br>
+    <%= link_to "Edit Destination", edit_user_destination_path(current_user,@destination) %><br>
