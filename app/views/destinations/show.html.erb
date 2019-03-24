@@ -3,14 +3,16 @@
     <p>Created by: <%= @destination.user.username %></p>
 
     <p>What other users are doing in <%=@destination.location%>:</p>
-   <% if @destination.experiences.count == 0 %>
+   <% if @destination.experiences.count == 0  %>
     <p> No users have been here before!</p>
     <% else %>
     <ul>
     <% User.all.each do |user| %>
        <% user.destinations.each do |destination| %>
             <% destination.experiences.each do |experience| %>
-                <l1><%= experience.activity %> posted by:<%= user.username %></li>
+                <% if user != current_user %>
+                    <li> <%= experience.activity %> -- posted by: <%= user.username %> </li>
+                <% end %>
             <% end %>
         <% end %>
     <% end %>
