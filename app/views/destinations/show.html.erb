@@ -10,7 +10,7 @@
     <% User.all.each do |user| %>
        <% user.destinations.each do |destination| %>
             <% destination.experiences.each do |experience| %>
-                <l1><%= experience %> posted by:<%= user.username %></li>
+                <l1><%= experience.activity %> posted by:<%= user.username %></li>
             <% end %>
         <% end %>
     <% end %>
