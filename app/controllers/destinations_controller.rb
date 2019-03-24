@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
     before_action :set_destination, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @destination = Destination.all
@@ -48,5 +49,12 @@ class DestinationsController < ApplicationController
 
     def destination_params
         params.require(:destination).permit(:location)
+    end
+
+    def authenticate_user
+        set_destination
+        if @destination.user != current_user
+            redirect_to user_path(current_user)
+        end
     end
 end
