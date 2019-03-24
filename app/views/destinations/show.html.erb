@@ -3,7 +3,10 @@
     <p>Created by: <%= @destination.user.username %></p>
 
     <p>What other users are doing in <%=@destination.location%>:</p>
-   <ul>
+   <% if @destination.experiences.count == 0 %>
+    <p> No users have been here before!</p>
+    <% else %>
+    <ul>
     <% User.all.each do |user| %>
        <% user.destinations.each do |destination| %>
             <% destination.experiences.each do |experience| %>
@@ -12,6 +15,6 @@
         <% end %>
     <% end %>
     </ul>
-
+    <% end %>
     <%= link_to "Back to your home page", user_path(@destination.user) %><br>
     <%= link_to "Edit Destination", edit_destination_path(@destination) %><br>
