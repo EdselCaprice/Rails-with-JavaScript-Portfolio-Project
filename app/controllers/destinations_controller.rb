@@ -29,7 +29,7 @@ class DestinationsController < ApplicationController
 
     def update
         if @destination.update(destination_params)
-            redirect_to @destination
+            redirect_to user_destination_path(current_user, @destination)
         else
             render :edit
         end
