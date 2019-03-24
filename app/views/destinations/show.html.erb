@@ -2,7 +2,16 @@
     <h1>Destination: <%= @destination.location %></h1>
     <p>Created by: <%= @destination.user.username %></p>
 
-    <p>What people are doing in <%=@destination.location%>:</p>
+    <p>What other users are doing in <%=@destination.location%>:</p>
+   <ul>
+    <% User.all.each do |user| %>
+       <% user.destinations.each do |destination| %>
+            <% destination.experiences.each do |experience| %>
+                <l1><%= experience %> posted by:<%= user.username %></li>
+            <% end %>
+        <% end %>
+    <% end %>
+    </ul>
 
     <%= link_to "Back to your home page", user_path(@destination.user) %><br>
     <%= link_to "Edit Destination", edit_destination_path(@destination) %><br>
