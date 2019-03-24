@@ -1,5 +1,6 @@
 <h1>Edit Destination</h1>
 
 <%= render 'form', destination: @destination %>
-
+<br>
+<%= button_to "Delete This Destination", @destination, :method => :delete %>
 <%= link_to "Your Home Page", user_path(@destination.user) %><br>

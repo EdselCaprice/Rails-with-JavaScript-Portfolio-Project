@@ -37,7 +37,7 @@ class DestinationsController < ApplicationController
 
     def destroy
         @destination.destroy
-        redirect_to destinations_url
+        redirect_to user_path(@destination.user)
     end
 
     private
