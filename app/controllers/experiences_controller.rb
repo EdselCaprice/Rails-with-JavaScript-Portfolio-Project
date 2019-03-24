@@ -32,7 +32,7 @@ class ExperiencesController < ApplicationController
 
     def update
         if @experience.update(experience_params)
-            redirect_to @experience
+            redirect_to user_destination_path(current_user, @experience.destination)
         else
             render :edit
         end
