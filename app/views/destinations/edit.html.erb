@@ -2,5 +2,5 @@
 
 <%= render 'form', destination: @destination %>
 <br>
-<%= button_to "Delete This Destination", @destination, :method => :delete %>
+<%= button_to "Delete This Destination", [current_user, @destination], :method => :delete %>
 <%= link_to "Your Home Page", user_path(current_user) %><br>

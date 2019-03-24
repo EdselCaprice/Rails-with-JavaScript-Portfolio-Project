@@ -1,4 +1,4 @@
-<%= form_with(model: @destination, local: true) do |form| %>
+<%= form_with(model: @destination, url: [current_user,@destination], local: true) do |form| %>
     <% if @destination.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@destination.errors.count, "error") %> prohibited this destination from being saved:</h2>
