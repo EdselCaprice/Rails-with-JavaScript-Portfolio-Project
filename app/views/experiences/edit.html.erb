@@ -1,0 +1,6 @@
+<h1>Edit Name or Delete Experience!</h1>
+
+<%= render 'form', experience: @experience %>
+<br>
+<%= button_to "Delete This experience", [current_user, @experience.destination, @experience], :method => :delete %><br>
+<%= link_to "Back to your home page", user_path(current_user) %><br>

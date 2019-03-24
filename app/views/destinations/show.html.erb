@@ -8,7 +8,7 @@
     <% end %>
     <ul>
     <% @destination.experiences.each do |experience| %>
-        <li><%= experience.activity %></li>
+        <li><%= link_to experience.activity, edit_user_destination_experience_path(current_user, @destination, experience) %></li>
     <% end %>
     </ul>
 

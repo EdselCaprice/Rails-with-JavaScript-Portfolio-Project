@@ -40,7 +40,7 @@ class ExperiencesController < ApplicationController
 
     def destroy
         @experience.destroy
-        redirect_to experiences_url
+        redirect_to user_destination_path(current_user, @experience.destination)
     end
 
     private
