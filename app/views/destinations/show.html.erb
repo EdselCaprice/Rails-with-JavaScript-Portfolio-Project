@@ -1,8 +1,11 @@
 
     <h1>Destination: <%= @destination.location %></h1>
-    <p>Created by: <%= @destination.user.username %></p>
+    <p>Created by: <%= current_user.username %></p>
 
     <h2>Your <%= @destination.location %> expriences: </h2>
+    <% if @destination.experiences.count == 0 %>
+        <p> You have not had any experiences in <%=@destination.location%> yet.  <%= link_to "If you have been here before, Add your experience now!", new_experience_path %> </p>
+    <% end %>
     <ul>
     <% @destination.experiences.each do |experience| %>
         <li><%= experience.activity %></li>
@@ -26,5 +29,5 @@
     </ul>
     <% end %>
     <%= link_to "Add your experience at this location", new_experience_path %><br>
-    <%= link_to "Back to your home page", user_path(@destination.user) %><br>
+    <%= link_to "Back to your home page", user_path(@current_user) %><br>
     <%= link_to "Edit Destination", edit_destination_path(@destination) %><br>
