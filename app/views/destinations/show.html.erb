@@ -2,7 +2,7 @@
     <h1>Destination: <%= @destination.location %></h1>
     <p>Created by: <%= current_user.username %></p>
 
-    <h2>Your <%= @destination.location %> expriences: </h2>
+    <h2>Your <%= @destination.location %> experiences: </h2>
     <% if @destination.experiences.count == 0 %>
         <p> You have not had any experiences in <%=@destination.location%> yet.  <%= link_to "If you have been here before, Add your experience now!", new_user_destination_experience_path(current_user, @destination) %> </p>
     <% end %>
