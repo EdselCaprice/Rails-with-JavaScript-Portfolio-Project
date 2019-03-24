@@ -17,6 +17,13 @@
     <% end %>
     </p>
 
+    <h3>Need ideas for your next vacation? Check out where everyone else is going:</h3>
+      <% Destination.locations.each do |destination| %>
+        <% if destination.user != current_user %>
+        <%= destination.user.username%> went to <%= destination.location %><br>
+        <% end %>
+      <%end%>
+<br>
 
 
 <%= link_to "Add Destination", new_user_destination_path(@user) %><br>

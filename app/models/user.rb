@@ -9,9 +9,6 @@ class User < ApplicationRecord
 
     private
 
-    def update_points(amount)
-        self.user.update(wanderpoints: self.wanderpoints + amount)
-    end
 
     def count_experiences
         counter = 0
