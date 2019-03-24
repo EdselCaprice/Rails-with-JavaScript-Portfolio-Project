@@ -7,6 +7,9 @@ class User < ApplicationRecord
       wanderpoints =  (self.destinations.count * 50) + count_experiences
     end
 
+    def self.find_or_create_by_omniauth[auth_hash]
+        oauth_email = auth_hash["info"]["email"]
+        
     private
 
 
