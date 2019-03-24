@@ -18,9 +18,10 @@ class ExperiencesController < ApplicationController
 
     def create
         @experience = Experience.new(experience_params)
+        @experience.destination_id = params[:destination_id]
         if @experience.save
-            session[:experience_id] = @experience.id
-            redirect_to experience_path(@experience)
+            #session[:experience_id] = @experience.id
+            redirect_to destination_path(@experience.destination)
         else
             render :new
         end
