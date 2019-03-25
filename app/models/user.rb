@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :username,uniqueness: true
 
     def current_wanderpoints
-      wanderpoints =  (self.destinations.count * 50) + count_experiences
+      wanderpoints =  (self.destinations.count * 50)
     end
 
 
@@ -18,22 +18,6 @@ class User < ApplicationRecord
         user.username = auth_hash["info"]["uid"]
         user.email = auth_hash["info"]["auth_hash"]
         end
-    end
-
-        
-    private
-
-
-    def count_experiences
-        counter = 0
-        Destination.all.each do |destination|
-            destination.experiences.each do |experience|
-                if experience.destination_id == destination.id
-                    counter = counter + 1
-                end
-            end
-        end
-        return counter * 10
     end
 
 end
