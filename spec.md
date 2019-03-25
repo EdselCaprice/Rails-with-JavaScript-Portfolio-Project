@@ -9,9 +9,9 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user - Location must be submitted in the Destinations table
 - [x] Include reasonable validations for simple model objects (User, Destination, Experience)
 - [x] Include a class level ActiveRecord scope method ( Destination.locations URL: /users/:id)
-- [x] Include signup (how e.g. Devise)
-- [x] Include login (how e.g. Devise)
-- [x] Include logout (how e.g. Devise)
+- [x] Include signup (how e.g. bcrypt)
+- [x] Include login (how e.g. bcrypt)
+- [x] Include logout (how e.g. bcrypt)
 - [x] Include third party signup/login (Github - OmniAuth)
 - [x] Include nested resource show or index (/users/23/destinations/37)
 - [x] Include nested resource "new" form (/users/23/destinations/37/experiences/new)
