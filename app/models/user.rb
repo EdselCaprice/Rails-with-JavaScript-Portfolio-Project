@@ -3,6 +3,10 @@ class User < ApplicationRecord
     has_many :experiences, through: :destinations
     has_many :destinations
 
+    validates :password_digest, uniqueness: true
+    validates :email, uniqueness: true
+    validates :username,uniqueness: true
+
     def current_wanderpoints
       wanderpoints =  (self.destinations.count * 50) + count_experiences
     end
