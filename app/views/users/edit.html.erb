@@ -1,3 +1,6 @@
+<h1> Edit User Account </h1>
 
-
+<%= render 'form', user: @user %>
+<br>
+<%= button_to "Delete This User", [current_user], :method => :delete %><br>
 <%= link_to "User Home Page", user_path(@user) %><br>
