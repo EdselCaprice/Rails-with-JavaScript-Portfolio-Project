@@ -15,7 +15,6 @@
     <%= link_to "Log Out", signout_path, method: :delete %>
     <% else %>
       <%= link_to "Sign in", signin_path %><br>
-      <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
       <%= link_to('Log in with Github!', '/auth/github') %><br>
       <%= link_to "Sign up", new_user_path %><br>
     <% end %>

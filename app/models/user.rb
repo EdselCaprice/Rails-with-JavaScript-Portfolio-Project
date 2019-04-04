@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :experiences, through: :destinations
     has_many :destinations
 
-    validates :password_digest, uniqueness: true
+    validates :password, presence: true
     validates :email, uniqueness: true
     validates :username,uniqueness: true
 
@@ -16,7 +16,7 @@ class User < ApplicationRecord
         self.where(:email => auth_hash["info"]["email"]).first_or_create do |user|
         user.password = SecureRandom.hex
         user.username = auth_hash["info"]["uid"]
-        user.email = auth_hash["info"]["auth_hash"]
+        user.email = auth_hash["info"]["email"]
         end
     end
 
