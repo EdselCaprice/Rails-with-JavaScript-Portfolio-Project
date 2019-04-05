@@ -20,8 +20,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if  User.find_by(username: @user.username) == nil && User.find_by(email: @user.email) == nil && @user.email.include?("@") && @user.password.length >= 5
-            @user.save
+        if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
       end
 
     def user_params
-        params.require(:user).permit(:username, :password, :email, :uid)
+        params.require(:user).permit(:username, :password, :email)
     end
 
     def authenticate_user

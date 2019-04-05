@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :experiences, through: :destinations
     has_many :destinations
 
+    validates :email, presence: true
+    validates :username, presence: true
     validates :password, presence: true
     validates :email, uniqueness: true
     validates :username,uniqueness: true
