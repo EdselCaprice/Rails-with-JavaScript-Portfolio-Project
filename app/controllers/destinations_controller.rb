@@ -1,17 +1,23 @@
 class DestinationsController < ApplicationController
     before_action :set_destination, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
+    #before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
     def index
-        @destination = Destination.all
+        @destinations = Destination.all
     end
 
     def show
+        @other_experiences = Experience.activities
+        @experience_array = []
+        @other_experiences.each do |experience|
+            if experience.user != current_user && experience.destination.location == set_destination.location
+                @experience_array << experience
+            end
+        end
     end
 
     def new
         @destination = Destination.new
-        @destination.user_id = params[:user_id]
         @user = User.find_by(id: params[:user_id])
     end
     
@@ -20,9 +26,8 @@ class DestinationsController < ApplicationController
 
     def create
         @destination = Destination.new(destination_params)
-        @destination.user_id = session[:user_id]
         if @destination.save
-            redirect_to user_destination_path(current_user, @destination)
+            redirect_to new_user_destination_experience_path(current_user, @destination)
         else
             render :new
         end

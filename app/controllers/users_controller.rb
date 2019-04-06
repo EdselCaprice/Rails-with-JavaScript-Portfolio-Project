@@ -8,7 +8,15 @@ class UsersController < ApplicationController
     end
 
     def show
-    
+        @other_destinations = Destination.locations
+        @other_experiences = Experience.activities
+        @experience_array = []
+        @other_experiences.each do |experience|
+            if experience.user != current_user
+                @experience_array << experience
+            end
+        end
+        @destinations = @user.destinations
     end
 
     def new

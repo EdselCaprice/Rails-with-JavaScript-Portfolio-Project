@@ -13,27 +13,13 @@
     </ul>
 
     <h3>What other users are doing when they go to <%=@destination.location%>:</h3>
-    <% counter = 0 %>
-   <% Destination.all.each do |destination| %>
-        <% if destination.location == @destination.location %>
-             <% counter = counter + destination.experiences.count %>
-       <% end %>
-    <% end %>
-    <% if counter - @destination.experiences.count == 0 %>
-        <p> No other users have experienced <%= @destination.location %> before!</p>
-    <% else %>
-    <ul>
-    <% User.all.each do |user| %>
-       <% user.destinations.each do |destination| %>
-            <% destination.experiences.each do |experience| %>
-                <% if user != current_user && destination.location == @destination.location %>
-                    <li> <%= experience.activity %> -- posted by: <%= user.username %> </li>
-                <% end %>
-            <% end %>
+
+    <% @experience_array.each do |experience| %>
+        <%=experience.user.username%> traveled to <%= experience.destination.location %> and went <%= experience.activity%><br>
         <% end %>
-    <% end %>
-    </ul>
-    <% end %>
+
+    <br>
+
     <%= link_to "Add your experience at this location", new_user_destination_experience_path(current_user, @destination) %><br>
     <%= link_to "Back to your home page", user_path(current_user) %><br>
     <%= link_to "Edit Destination", edit_user_destination_path(current_user,@destination) %><br>

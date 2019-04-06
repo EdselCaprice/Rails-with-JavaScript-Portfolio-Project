@@ -22,8 +22,8 @@ class ExperiencesController < ApplicationController
     def create
         @experience = Experience.new(experience_params)
         @experience.destination = Destination.find_by(id: params[:destination_id])
+        @experience.user = current_user
         if @experience.save
-            #session[:experience_id] = @experience.id
             redirect_to user_destination_path(current_user, @experience.destination)
         else
             render :new

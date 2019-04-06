@@ -10,16 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_195417) do
+ActiveRecord::Schema.define(version: 2019_04_06_143724) do
 
   create_table "destinations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "experience_id"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["experience_id"], name: "index_destinations_on_experience_id"
-    t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -27,7 +23,9 @@ ActiveRecord::Schema.define(version: 2019_03_24_195417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "destination_id"
+    t.integer "user_id"
     t.index ["destination_id"], name: "index_experiences_on_destination_id"
+    t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

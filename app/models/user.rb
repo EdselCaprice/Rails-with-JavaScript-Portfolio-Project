@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :experiences, through: :destinations
-    has_many :destinations
+    has_many :experiences
+    has_many :destinations, through: :experiences
 
     validates :email, presence: true
     validates :username, presence: true
