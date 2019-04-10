@@ -18,7 +18,7 @@
     </p>
 
     <h3>Need ideas for your next vacation? Check out where everyone else is going:</h3>
-    <% User.other_destinations(current_user).each do |destination| %>
+    <% User.user_destinations(current_user).each do |destination| %>
       <%= destination %><br>
       <% end %>
 
