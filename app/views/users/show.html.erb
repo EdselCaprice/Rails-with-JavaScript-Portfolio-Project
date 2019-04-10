@@ -18,9 +18,10 @@
     </p>
 
     <h3>Need ideas for your next vacation? Check out where everyone else is going:</h3>
-        <% @experience_array.each do |experience| %>
-          <%=experience.user.username%> traveled to <%= experience.destination.location %> and went <%= experience.activity%><br>
-          <% end %>
+    <% User.other_destinations(current_user).each do |destination| %>
+      <%= destination %><br>
+      <% end %>
+
 <br>
 <%= link_to "Add Destination", new_user_destination_path(@user) %><br>
 <%= link_to "Edit Account", edit_user_path(@user) %><br>

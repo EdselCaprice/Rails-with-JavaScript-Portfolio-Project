@@ -8,12 +8,6 @@ class DestinationsController < ApplicationController
 
     def show
         @other_experiences = Experience.activities
-        @experience_array = []
-        @other_experiences.each do |experience|
-            if experience.user != current_user && experience.destination.location == set_destination.location
-                @experience_array << experience
-            end
-        end
     end
 
     def new

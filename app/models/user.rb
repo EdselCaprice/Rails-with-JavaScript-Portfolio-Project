@@ -22,4 +22,12 @@ class User < ApplicationRecord
         end
     end
 
+    def self.other_destinations(current_user)
+        User.all.collect do |user|
+            if user != current_user
+                "#{user.username} traveled to #{user.destinations.collect { |destination| destination.location}.to_sentence}"
+            end
+        end
+    end
+
 end
