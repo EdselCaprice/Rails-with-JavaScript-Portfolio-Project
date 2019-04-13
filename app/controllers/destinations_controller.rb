@@ -12,16 +12,17 @@ class DestinationsController < ApplicationController
 
     def new
         @destination = Destination.new
-        @user = User.find_by(id: params[:user_id])
+        @destination.experiences.build
     end
     
     def edit
     end
 
     def create
-        @destination = Destination.new(destination_params)
+        @destination = Destination.create(destination_params)
+        @destination.experiences.last.user = current_user
         if @destination.save
-            redirect_to new_user_destination_experience_path(current_user, @destination)
+            redirect_to user_destination_path(current_user, @destination)
         else
             render :new
         end
@@ -47,7 +48,7 @@ class DestinationsController < ApplicationController
     end
 
     def destination_params
-        params.require(:destination).permit(:location)
+        params.require(:destination).permit(:location, experiences_attributes: [:activity])
     end
 
     def authenticate_user

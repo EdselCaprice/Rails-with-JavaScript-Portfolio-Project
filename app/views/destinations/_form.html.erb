@@ -15,7 +15,16 @@
       <%= form.label :location %>
       <%= form.text_field :location %>
     </div>
-            <br>
+    <br>
+
+    <%= form.fields_for :experiences do |exp| %>
+      <h2> Add an experience: </h2>
+      <%= exp.label :activity %>
+      <%= exp.text_field :activity %><br>
+    <% end %>
+
+
+    <br>
     <div class="actions">
       <%= form.submit%>
     </div>
