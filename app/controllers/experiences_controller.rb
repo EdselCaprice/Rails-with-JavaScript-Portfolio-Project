@@ -12,8 +12,8 @@ class ExperiencesController < ApplicationController
 
     def new
         @experience = Experience.new
-        @experience.destination = Destination.find_by(id: params[:destination_id])
-
+        #@experience.build_destination
+        
     end
     
     def edit

@@ -12,7 +12,7 @@ class DestinationsController < ApplicationController
 
     def new
         @destination = Destination.new
-        @destination.experiences.build
+        3.times do @destination.experiences.build end
     end
     
     def edit
@@ -20,7 +20,7 @@ class DestinationsController < ApplicationController
 
     def create
         @destination = Destination.create(destination_params)
-        @destination.experiences.last.user = current_user
+        #@destination.experiences.last.user = current_user
         if @destination.save
             redirect_to user_destination_path(current_user, @destination)
         else
@@ -48,7 +48,7 @@ class DestinationsController < ApplicationController
     end
 
     def destination_params
-        params.require(:destination).permit(:location, experiences_attributes: [:activity])
+        params.require(:destination).permit(:location, experiences_attributes: [:activity, :user_id])
     end
 
     def authenticate_user
