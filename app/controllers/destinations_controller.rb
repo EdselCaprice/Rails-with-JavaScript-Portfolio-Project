@@ -12,7 +12,7 @@ class DestinationsController < ApplicationController
 
     def new
         @destination = Destination.new
-        3.times do @destination.experiences.build end
+        3.times { @destination.experiences.build }
     end
     
     def edit
